@@ -372,7 +372,17 @@
     }
 
     .schedule-card {
+      overflow: hidden;
       padding: 24px;
+    }
+
+    .schedule-card img {
+      width: calc(100% + 48px);
+      height: 150px;
+      object-fit: cover;
+      display: block;
+      margin: -24px -24px 18px;
+      border-radius: 30px 30px 22px 22px;
     }
 
     .schedule-card .time {
@@ -458,6 +468,16 @@
 
     .contact-card {
       padding: 28px;
+    }
+
+    .contact-photo {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      display: block;
+      margin: 18px 0 20px;
+      border-radius: 26px;
+      box-shadow: 0 12px 22px rgba(73, 54, 96, 0.12);
     }
 
     .contact-list {
@@ -685,16 +705,19 @@
         </p>
         <div class="schedule">
           <article class="schedule-card">
+            <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=700&q=80" alt="Дети играют утром в группе">
             <span class="time">08:00 — 09:00</span>
             <h3>Встреча и игры</h3>
             <p>Мягкая адаптация, настольные игры, конструкторы и дружеское общение.</p>
           </article>
           <article class="schedule-card">
+            <img src="https://plus.unsplash.com/premium_photo-1682091399398-f35b09805d0b?auto=format&fit=crop&w=700&q=80" alt="Дети и педагог рисуют на занятии">
             <span class="time">09:30 — 12:30</span>
             <h3>Занятия и прогулка</h3>
             <p>Развитие речи, творчество, музыка, зарядка и прогулка на свежем воздухе.</p>
           </article>
           <article class="schedule-card">
+            <img src="https://plus.unsplash.com/premium_photo-1661376796342-e28ae8c195af?auto=format&fit=crop&w=700&q=80" alt="Дети занимаются музыкой в дошкольной группе">
             <span class="time">15:30 — 18:00</span>
             <h3>Кружки и отдых</h3>
             <p>Творческие кружки, спокойные игры, чтение сказок и встреча с родителями.</p>
@@ -706,6 +729,8 @@
           <img src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=500&q=80" alt="Дети занимаются в группе">
           <img src="https://images.unsplash.com/photo-1526634332515-d56c5fd16991?auto=format&fit=crop&w=500&q=80" alt="Ребёнок играет с игрушками">
           <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?auto=format&fit=crop&w=500&q=80" alt="Дети читают и учатся">
+          <img src="https://plus.unsplash.com/premium_photo-1661378491161-ce3ad7a2ef06?auto=format&fit=crop&w=500&q=80" alt="Дети рисуют вместе с воспитателем">
+          <img src="https://plus.unsplash.com/premium_photo-1661398499181-95dbb0accbe7?auto=format&fit=crop&w=500&q=80" alt="Дошкольники изучают новое на занятии">
         </div>
       </section>
 
@@ -725,7 +750,7 @@
               <li>работа с цветом;</li>
               <li>уверенность в себе.</li>
             </ul>
-            <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=700&q=80" alt="Ребёнок рисует цветными карандашами">
+            <img src="https://plus.unsplash.com/premium_photo-1661378491161-ce3ad7a2ef06?auto=format&fit=crop&w=700&q=80" alt="Дети рисуют цветными карандашами">
           </article>
 
           <article class="club-card" style="--club-color: #b8f2df;">
@@ -749,7 +774,7 @@
               <li>развитие слуха;</li>
               <li>командные игры.</li>
             </ul>
-            <img src="https://images.unsplash.com/photo-1513883049090-d0b7439799bf?auto=format&fit=crop&w=700&q=80" alt="Музыкальные занятия для детей">
+            <img src="https://plus.unsplash.com/premium_photo-1661376796342-e28ae8c195af?auto=format&fit=crop&w=700&q=80" alt="Музыкальные занятия для детей">
           </article>
         </div>
       </section>
@@ -762,6 +787,7 @@
         <div class="contacts-grid">
           <article class="contact-card">
             <h3>Мы рядом</h3>
+            <img class="contact-photo" src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=800&q=80" alt="Светлый класс для дошкольных занятий">
             <div class="contact-list">
               <div class="contact-item">🏡 <span>ул. Радужная, 7, центр дошкольного развития «Академия роста»</span></div>
               <div class="contact-item">☎️ <span>+7 (900) 123-45-67</span></div>
@@ -771,6 +797,7 @@
 
           <article class="contact-card">
             <h3>Форма записи</h3>
+            <img class="contact-photo" src="https://plus.unsplash.com/premium_photo-1661377258550-af38f56ef581?auto=format&fit=crop&w=800&q=80" alt="Педагог занимается с детьми за столом">
             <form id="signupForm">
               <label>
                 Имя ребёнка
