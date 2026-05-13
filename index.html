@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Солнышко | Детский сад и кружки</title>
+  <style>
+    :root {
+      --sun: #ffd45a;
+      --coral: #ff7b73;
+      --mint: #7edfc3;
+      --sky: #74c9ff;
+      --violet: #b89cff;
+      --cream: #fff8e8;
+      --ink: #3b3650;
+      --white: #ffffff;
+      --shadow: 0 18px 35px rgba(73, 54, 96, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Trebuchet MS", "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 8%, rgba(255, 212, 90, 0.35) 0 90px, transparent 91px),
+        radial-gradient(circle at 92% 14%, rgba(126, 223, 195, 0.36) 0 120px, transparent 121px),
+        linear-gradient(135deg, #fff8e8 0%, #e8f8ff 48%, #fff1f6 100%);
+      overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      z-index: 0;
+      width: 140px;
+      height: 140px;
+      pointer-events: none;
+      opacity: 0.8;
+      background-repeat: no-repeat;
+      background-size: contain;
+      animation: sparkle 2.4s ease-in-out infinite;
+    }
+
+    body::before {
+      top: 88px;
+      left: 18px;
+      background-image: url("data:image/svg+xml,%3Csvg width='160' height='160' viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='6' y='48' font-size='38'%3E%E2%AD%90%3C/text%3E%3Ctext x='75' y='84' font-size='30'%3E%E2%AD%90%3C/text%3E%3Ctext x='30' y='130' font-size='26'%3E%E2%9C%A8%3C/text%3E%3C/svg%3E");
+    }
+
+    body::after {
+      right: 8px;
+      bottom: 32px;
+      background-image: url("data:image/svg+xml,%3Csvg width='160' height='160' viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='15' y='52' font-size='34'%3E%F0%9F%A6%8B%3C/text%3E%3Ctext x='88' y='92' font-size='28'%3E%F0%9F%A6%8B%3C/text%3E%3Ctext x='44' y='135' font-size='22'%3E%E2%9C%A8%3C/text%3E%3C/svg%3E");
+      animation-name: flutter;
+      animation-duration: 5s;
+    }
+
+    @keyframes sparkle {
+      0%, 100% {
+        transform: scale(0.95) rotate(-4deg);
+        opacity: 0.55;
+      }
+      50% {
+        transform: scale(1.08) rotate(4deg);
+        opacity: 1;
+      }
+    }
+
+    @keyframes flutter {
+      0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      25% {
+        transform: translate(-14px, -12px) rotate(7deg);
+      }
+      50% {
+        transform: translate(8px, -26px) rotate(-8deg);
+      }
+      75% {
+        transform: translate(-10px, -8px) rotate(5deg);
+      }
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .top-banner {
+      overflow: hidden;
+      color: #5b3b00;
+      background: linear-gradient(90deg, var(--sun), #ffeaa3, var(--mint));
+      border-bottom: 4px solid rgba(255, 255, 255, 0.75);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .marquee {
+      display: inline-block;
+      padding: 10px 0;
+      animation: marquee 18s linear infinite;
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(100vw);
+      }
+      to {
+        transform: translateX(-100%);
+      }
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      background: rgba(255, 248, 232, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 18px 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.35rem;
+      font-weight: 900;
+    }
+
+    .logo-icon {
+      display: grid;
+      place-items: center;
+      width: 54px;
+      height: 54px;
+      background: var(--sun);
+      border: 4px solid var(--white);
+      border-radius: 50%;
+      box-shadow: var(--shadow);
+      animation: bounce-smile 1.8s ease-in-out infinite;
+    }
+
+    @keyframes bounce-smile {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    nav ul {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    nav a {
+      display: inline-block;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 800;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    nav a:hover {
+      background: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      gap: 34px;
+      align-items: center;
+      padding: 58px 0 34px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 14px;
+      padding: 9px 15px;
+      color: #734800;
+      background: #fff1b8;
+      border: 2px dashed #ffbf40;
+      border-radius: 999px;
+      font-weight: 900;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      line-height: 1.08;
+    }
+
+    h1 {
+      max-width: 720px;
+      font-size: clamp(2.3rem, 6vw, 5rem);
+      color: #2f2a46;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      text-align: center;
+    }
+
+    .hero p,
+    .section-text {
+      font-size: 1.18rem;
+      line-height: 1.7;
+    }
+
+    .hero p {
+      max-width: 610px;
+      margin: 22px 0;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 15px 24px;
+      border: 0;
+      border-radius: 999px;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--coral), #ff9b5f);
+      box-shadow: 0 12px 22px rgba(255, 123, 115, 0.35);
+      font: inherit;
+      font-size: 1.05rem;
+      font-weight: 900;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 16px 28px rgba(255, 123, 115, 0.42);
+      outline: none;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(255, 123, 115, 0.45), 0 12px 22px rgba(255, 123, 115, 0.35);
+      }
+      50% {
+        box-shadow: 0 0 0 12px rgba(255, 123, 115, 0), 0 12px 22px rgba(255, 123, 115, 0.35);
+      }
+    }
+
+    .btn-secondary {
+      color: #315162;
+      background: var(--white);
+      box-shadow: var(--shadow);
+      animation: none;
+    }
+
+    .hero-card {
+      position: relative;
+      min-height: 460px;
+    }
+
+    .hero-photo {
+      position: absolute;
+      overflow: hidden;
+      border: 8px solid var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-photo.big {
+      top: 24px;
+      left: 40px;
+      width: 68%;
+      height: 330px;
+      border-radius: 42px;
+      transform: rotate(-4deg);
+    }
+
+    .hero-photo.small {
+      right: 8px;
+      bottom: 18px;
+      width: 46%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      transform: rotate(7deg);
+    }
+
+    .floating-note {
+      position: absolute;
+      right: 16px;
+      top: 26px;
+      max-width: 210px;
+      padding: 16px;
+      background: var(--white);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+      font-weight: 900;
+      transform: rotate(5deg);
+    }
+
+    .section {
+      padding: 56px 0;
+    }
+
+    .section-text {
+      max-width: 760px;
+      margin: 16px auto 34px;
+      text-align: center;
+    }
+
+    .schedule {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .schedule-card,
+    .club-card,
+    .contact-card {
+      background: rgba(255, 255, 255, 0.9);
+      border: 4px solid var(--white);
+      border-radius: 34px;
+      box-shadow: var(--shadow);
+    }
+
+    .schedule-card {
+      padding: 24px;
+    }
+
+    .schedule-card .time {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 8px 12px;
+      color: #3f3a00;
+      background: #fff0a8;
+      border-radius: 999px;
+      font-weight: 900;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 30px;
+    }
+
+    .gallery img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+      border: 7px solid var(--white);
+      border-radius: 50%;
+      box-shadow: var(--shadow);
+    }
+
+    .gallery img:nth-child(even) {
+      border-radius: 34px;
+    }
+
+    .clubs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .club-card {
+      position: relative;
+      overflow: hidden;
+      padding: 26px;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .club-card:hover {
+      transform: translateY(-12px) rotate(-1deg);
+      box-shadow: 0 24px 40px rgba(73, 54, 96, 0.2);
+    }
+
+    .club-icon {
+      display: grid;
+      place-items: center;
+      width: 76px;
+      height: 76px;
+      margin-bottom: 16px;
+      border-radius: 24px;
+      background: var(--club-color);
+      font-size: 2.35rem;
+    }
+
+    .club-card img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      display: block;
+      margin-top: 20px;
+      border-radius: 26px;
+    }
+
+    .club-card ul {
+      padding-left: 22px;
+      line-height: 1.7;
+    }
+
+    .contacts-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .contact-card {
+      padding: 28px;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 16px;
+      background: #f4fbff;
+      border-radius: 22px;
+      font-weight: 800;
+    }
+
+    form {
+      display: grid;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    label {
+      display: grid;
+      gap: 8px;
+      font-weight: 900;
+    }
+
+    input {
+      width: 100%;
+      min-height: 54px;
+      padding: 14px 16px;
+      border: 3px solid #dff2ff;
+      border-radius: 18px;
+      color: var(--ink);
+      background: #ffffff;
+      font: inherit;
+      font-size: 1rem;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    input:focus {
+      border-color: var(--sky);
+      box-shadow: 0 0 0 5px rgba(116, 201, 255, 0.2);
+      outline: none;
+    }
+
+    .decor-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .decor {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 16px;
+      background: var(--white);
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+      font-weight: 900;
+    }
+
+    footer {
+      padding: 28px 0 42px;
+      text-align: center;
+      font-weight: 800;
+    }
+
+    .gif-note {
+      position: fixed;
+      left: 18px;
+      bottom: 22px;
+      z-index: 3;
+      width: 82px;
+      height: 82px;
+      border-radius: 28px;
+      background-image: url("data:image/gif;base64,R0lGODlhUABQAPAAAP/7av///yH/C05FVFNDQVBFMi4wAwEAAAAh+QQFCgABACwAAAAAUABQAAACZYyPqcvtD6OctNqLs968+w+G4kiW5omm6sq27gvH8kzX9o3V8Xa8YxtTbY6qYxH0Wk8UouQ6m2+pqspctSg2B1Za3fyMe2O9lUQAAOw==");
+      background-size: cover;
+      box-shadow: var(--shadow);
+      opacity: 0.9;
+    }
+
+    @media (max-width: 880px) {
+      .nav,
+      nav ul,
+      .hero-actions {
+        justify-content: center;
+      }
+
+      .nav {
+        flex-direction: column;
+      }
+
+      .hero,
+      .contacts-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 36px;
+        text-align: center;
+      }
+
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-card {
+        min-height: 410px;
+      }
+
+      .schedule,
+      .clubs {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        width: min(100% - 22px, 1120px);
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+      }
+
+      .hero-photo.big {
+        left: 0;
+        width: 76%;
+      }
+
+      .hero-photo.small {
+        width: 52%;
+      }
+
+      .floating-note {
+        right: 0;
+      }
+
+      .gallery {
+        gap: 12px;
+      }
+
+      body::before,
+      body::after,
+      .gif-note {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-banner" aria-label="Важное объявление">
+    <span class="marquee">Запишите ребёнка на пробный день — бесплатно! 🌈 Запишите ребёнка на пробный день — бесплатно! 🌈</span>
+  </div>
+
+  <div class="page">
+    <header>
+      <div class="container nav">
+        <a class="logo" href="#home" aria-label="На главную">
+          <span class="logo-icon">😊</span>
+          <span>Солнышко</span>
+        </a>
+        <nav aria-label="Главное меню">
+          <ul>
+            <li><a href="#home">Главная</a></li>
+            <li><a href="#clubs">Кружки</a></li>
+            <li><a href="#contacts">Запись</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="home">
+      <section class="container hero">
+        <div>
+          <p class="eyebrow">☀️ Добро пожаловать в детский сад</p>
+          <h1>Место, где детям весело расти, играть и учиться</h1>
+          <p>
+            Уютные группы, творческие занятия, прогулки и внимательные воспитатели.
+            Мы помогаем каждому ребёнку раскрыть таланты и найти новых друзей.
+          </p>
+          <div class="hero-actions">
+            <a class="btn" href="#contacts">Записаться</a>
+            <a class="btn btn-secondary" href="#schedule">Посмотреть расписание</a>
+          </div>
+        </div>
+
+        <div class="hero-card" aria-label="Фотографии детей">
+          <div class="floating-note">🏠 У нас как дома: тепло, безопасно и интересно!</div>
+          <div class="hero-photo big">
+            <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=900&q=80" alt="Радостные дети играют вместе">
+          </div>
+          <div class="hero-photo small">
+            <img src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&w=700&q=80" alt="Ребёнок улыбается во время занятия">
+          </div>
+        </div>
+      </section>
+
+      <section class="container section" id="schedule">
+        <h2>Расписание дня</h2>
+        <p class="section-text">
+          День устроен так, чтобы детям хватало времени на занятия, отдых, игры и прогулки.
+        </p>
+        <div class="schedule">
+          <article class="schedule-card">
+            <span class="time">08:00 — 09:00</span>
+            <h3>Встреча и игры</h3>
+            <p>Мягкая адаптация, настольные игры, конструкторы и дружеское общение.</p>
+          </article>
+          <article class="schedule-card">
+            <span class="time">09:30 — 12:30</span>
+            <h3>Занятия и прогулка</h3>
+            <p>Развитие речи, творчество, музыка, зарядка и прогулка на свежем воздухе.</p>
+          </article>
+          <article class="schedule-card">
+            <span class="time">15:30 — 18:00</span>
+            <h3>Кружки и отдых</h3>
+            <p>Творческие кружки, спокойные игры, чтение сказок и встреча с родителями.</p>
+          </article>
+        </div>
+
+        <div class="gallery" aria-label="Весёлые детские фотографии">
+          <img src="https://images.unsplash.com/photo-1484820540004-14229fe36ca4?auto=format&fit=crop&w=500&q=80" alt="Дети рисуют за столом">
+          <img src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=500&q=80" alt="Дети занимаются в группе">
+          <img src="https://images.unsplash.com/photo-1526634332515-d56c5fd16991?auto=format&fit=crop&w=500&q=80" alt="Ребёнок играет с игрушками">
+          <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?auto=format&fit=crop&w=500&q=80" alt="Дети читают и учатся">
+        </div>
+      </section>
+
+      <section class="container section" id="clubs">
+        <h2>Наши кружки</h2>
+        <p class="section-text">
+          Три любимых направления для дошкольников: творчество, моторика и музыка.
+          На компьютере карточки удобно стоят в три колонки.
+        </p>
+        <div class="clubs">
+          <article class="club-card" style="--club-color: #ffe084;">
+            <div class="club-icon">✏️</div>
+            <h3>Рисование</h3>
+            <p>Краски, карандаши и первые выставки маленьких художников.</p>
+            <ul>
+              <li>развитие фантазии;</li>
+              <li>работа с цветом;</li>
+              <li>уверенность в себе.</li>
+            </ul>
+            <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=700&q=80" alt="Ребёнок рисует цветными карандашами">
+          </article>
+
+          <article class="club-card" style="--club-color: #b8f2df;">
+            <div class="club-icon">🧸</div>
+            <h3>Лепка</h3>
+            <p>Весёлые фигурки из пластилина помогают тренировать пальчики.</p>
+            <ul>
+              <li>мелкая моторика;</li>
+              <li>терпение и внимание;</li>
+              <li>объёмное мышление.</li>
+            </ul>
+            <img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=700&q=80" alt="Дети играют с яркими материалами">
+          </article>
+
+          <article class="club-card" style="--club-color: #d4c5ff;">
+            <div class="club-icon">🎵</div>
+            <h3>Музыка</h3>
+            <p>Песни, ритм, танцы и первые выступления перед друзьями.</p>
+            <ul>
+              <li>чувство ритма;</li>
+              <li>развитие слуха;</li>
+              <li>командные игры.</li>
+            </ul>
+            <img src="https://images.unsplash.com/photo-1513883049090-d0b7439799bf?auto=format&fit=crop&w=700&q=80" alt="Музыкальные занятия для детей">
+          </article>
+        </div>
+      </section>
+
+      <section class="container section" id="contacts">
+        <h2>Контакты и запись</h2>
+        <p class="section-text">
+          Оставьте заявку, и администратор расскажет о группе, свободных местах и пробном дне.
+        </p>
+        <div class="contacts-grid">
+          <article class="contact-card">
+            <h3>Мы рядом</h3>
+            <div class="contact-list">
+              <div class="contact-item">🏡 <span>ул. Радужная, 7, детский центр «Солнышко»</span></div>
+              <div class="contact-item">☎️ <span>+7 (900) 123-45-67</span></div>
+              <div class="contact-item">🕘 <span>Пн–Пт: 08:00–18:00</span></div>
+            </div>
+          </article>
+
+          <article class="contact-card">
+            <h3>Форма записи</h3>
+            <form id="signupForm">
+              <label>
+                Имя ребёнка
+                <input type="text" name="childName" placeholder="Например, Миша" required>
+              </label>
+              <label>
+                Возраст
+                <input type="number" name="age" min="2" max="7" placeholder="5" required>
+              </label>
+              <label>
+                Телефон родителя
+                <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required>
+              </label>
+              <button class="btn" type="submit">Записаться</button>
+            </form>
+          </article>
+        </div>
+
+        <div class="decor-row" aria-label="Мультяшные элементы">
+          <span class="decor">☀️ солнышко</span>
+          <span class="decor">🏠 домик</span>
+          <span class="decor">🧸 игрушка</span>
+          <span class="decor">✏️ карандаш</span>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">© 2026 Детский сад «Солнышко». Добрый сайт для детей и родителей.</div>
+    </footer>
+  </div>
+
+  <div class="gif-note" aria-hidden="true"></div>
+
+  <script>
+    const form = document.querySelector("#signupForm");
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      alert("Спасибо, мы свяжемся с вами");
+      form.reset();
+    });
+  </script>
+</body>
+</html>
